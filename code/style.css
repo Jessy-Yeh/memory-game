@@ -34,9 +34,10 @@ label,
   width: 640px;
   height: 640px;
   display: flex;
-  margin: auto;
+  margin: 0 auto;
   flex-wrap: wrap;
   perspective: 1000px;
+  position: relative;
 }
 
 .memory-card {
@@ -71,4 +72,23 @@ label,
 
 .memory-card.flip {
   transform: rotateY(180deg);
+}
+
+.popup {
+  display: none;
+  width: 350px;
+  height: 250px;
+  padding: 50px;
+  font-size: 1.5rem;
+  background-color: #f0a202;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.display {
+  display: block;
 }
