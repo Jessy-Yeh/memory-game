@@ -2,9 +2,12 @@ const cards = document.querySelectorAll(".memory-card");
 let lockBoard = false;
 let hasFlippedCard = false;
 let firstCard, secondCard;
+let popUp = document.querySelector(".popup");
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
+let clickNumber = 0;
+let timerId;
 
 function setTime() {
   ++totalSeconds;
@@ -13,7 +16,7 @@ function setTime() {
 }
 
 function pad(val) {
-  let valString = val + "";
+  let valString = String(val);
   if (valString.length < 2) {
     return "0" + valString;
   } else {
@@ -22,13 +25,20 @@ function pad(val) {
 }
 
 function flipCard() {
-  //time counter
-  setInterval(setTime, 1000);
-  setTime();
-
+  ++clickNumber;
   if (lockBoard) return;
   if (this === firstCard) return;
   this.classList.add("flip");
+
+  if (clickNumber === 1) {
+    timerId = setInterval(setTime, 1000);
+  }
+
+  if ([...cards].every((card) => card.classList.contains("flip"))) {
+    clearInterval(timerId);
+    popUp.classList.add("display");
+    popUp.innerHTML = `Congrats٩(●˙▿˙●)۶…⋆ฺ Your complete time is ${totalSeconds} seconds`;
+  }
 
   if (!hasFlippedCard) {
     //first click
@@ -78,4 +88,3 @@ function resetBoard() {
 })();
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
-cards.addEventListener("click", setTime);
