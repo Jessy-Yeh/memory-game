@@ -1,3 +1,5 @@
+@import "reset";
+
 body {
   height: 100vh;
   display: flex;
@@ -18,11 +20,11 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 0.5rem;
-}
 
-.counter p {
-  font-weight: 600;
-  margin-right: 1rem;
+  p {
+    font-weight: 600;
+    margin-right: 1rem;
+  }
 }
 
 label,
@@ -48,11 +50,11 @@ label,
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform 0.5s;
-}
 
-.memory-card:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
+  &:active {
+    transform: scale(0.97);
+    transition: transform 0.2s;
+  }
 }
 
 .front-face,
